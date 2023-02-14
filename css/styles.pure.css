@@ -1565,10 +1565,16 @@ button {
   border-radius: 25px;
   box-shadow: 2px 2px 5px 0px #ccc;
   background-color: rgb(242, 242, 242);
+  max-width: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .container {
   max-width: 960px;
+  
 }
 
 .dropdown-item {
