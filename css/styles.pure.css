@@ -122,6 +122,8 @@ h6 {
 h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
+
+
 @media (min-width: 1200px) {
   .h1,
   h1 {
@@ -1545,7 +1547,6 @@ input {
   border-left: 0;
   border-top: 0;
 }
-
 textarea {
   border-radius: 25px;
   width: 30rem;
@@ -1555,14 +1556,12 @@ textarea {
   border-left: 0;
   border-top: 0;
 }
-
 button {
   border-radius: 25px;
   width: 10rem;
   border-bottom: 2px solid #ccc;
   border-right: 2px solid #ccc;
 }
-
 .form-container {
   border: 1px solid #ccc;
   padding: 20px;
@@ -1575,11 +1574,9 @@ button {
   justify-content: center;
   margin: 0 auto;
 }
-
 .container {
   max-width: 960px;
 }
-
 .dropdown-item {
   background-color: lightgray;
   color: black;
@@ -1588,11 +1585,9 @@ button {
   display: block;
   padding: 1px;
 }
-
 .dropdown-item:nth-child(2) {
   background-color: gray;
 }
-
 .list-group-item + .list-group-item {
   border-top-width: 0;
 }
@@ -1864,3 +1859,12 @@ button {
   background-color: #141619;
   border-color: #141619;
 }
+ @media (max-width: 479px) {
+
+   .card-deck {
+  display: block;
+  }
+  .card {
+    margin-bottom: 10px!important
+  }
+ }
