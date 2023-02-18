@@ -1508,7 +1508,7 @@ body {
   max-width: 100%;
 }
 .form{
-  width: 100%;
+  width: 80%;
 }
 .card {
   background-color: white !important;
@@ -1871,4 +1871,7 @@ button {
   .card {
     margin-bottom: 10px!important
   }
+  .form{
+  width: 100%;
+}
  }
