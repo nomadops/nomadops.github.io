@@ -50,7 +50,7 @@ height: 67px;
   justify-content:space-between;
   text-align: center;
   flex-wrap: wrap;
-  padding: 30px;
+  padding: 10px;
 }
 .service{
 flex: 0 0 auto;
@@ -58,7 +58,7 @@ width: 30%;
 }
 .service-card{
   border: 0.8px solid #c8c8c8;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: white;
   box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
 }
@@ -66,13 +66,14 @@ width: 30%;
   height: 90px;
   background-color: #F8F8F8;
   border-bottom: 0.8px solid #c8c8c8;
-  border-radius: 8px 8px 0 0 ;
+  border-radius: 20px 20px 0 0 ;
   padding: 20px;
 }
+
 .service-card-body{
   flex: 1 1 auto;
   padding: 20px;
-  height: 200px;
+  height: 170px;
 }
 .github-card{
   max-width: 450px;
@@ -174,9 +175,7 @@ text-decoration: underline;
   width: 100%;
   margin-bottom: 10px;
   }
-  .service-card-body{
-    height: 180px;
-  }
+ 
   .sidebar{
     display: none!important;
   }
