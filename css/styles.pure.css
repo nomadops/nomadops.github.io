@@ -1511,6 +1511,7 @@ body {
   width: 80%;
 }
 .card {
+  
   background-color: white !important;
   border-radius: 20px !important;
   box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
@@ -1543,20 +1544,25 @@ body {
 }
 
 input {
+  text-align: center;
   border-radius: 25px;
+  padding: 10px;
   width: 100%;
   height: 3.25rem;
-  border-bottom: 2px solid #ccc;
-  border-right: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
   border-left: 0;
   border-top: 0;
 }
 textarea {
   border-radius: 25px;
+  padding: 20px;
   width: 100%;
   height: 8rem;
-  border-bottom: 2px solid #ccc;
-  border-right: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
   border-left: 0;
   border-top: 0;
 }
@@ -1569,7 +1575,7 @@ button {
 .form-container {
   border: 1px solid #ccc;
   padding: 20px;
-  border-radius: 25px;
+  border-radius: 20px;
   box-shadow: 2px 2px 5px 0px #ccc;
   background-color: rgb(242, 242, 242);
   max-width: 640px;
@@ -1577,6 +1583,12 @@ button {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  margin-bottom: 10px;
+}
+.form-container button{
+  margin-top: 10px;
+   border-radius: 25px;
+    box-shadow: 0 0.125rem 0.25rem #ccc;
 }
 .container {
   max-width: 960px;
@@ -1864,14 +1876,18 @@ button {
   border-color: #141619;
 }
  @media (max-width: 479px) {
-
    .card-deck {
   display: block;
+  margin: 0 auto;
   }
   .card {
-    margin-bottom: 10px!important
+    margin-bottom: 10px!important;
+     margin: 10px auto!important;
+     width: 100%!important;
   }
   .form{
   width: 100%;
+  
 }
+
  }
