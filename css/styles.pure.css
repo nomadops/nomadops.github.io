@@ -1574,11 +1574,7 @@ button {
   border-bottom: 2px solid #ccc;
   border-right: 2px solid #ccc;
 }
-input:focus{
-  border-color: #0a58ca!important;
-/* border-color: 0.15s ease-in-out;
-box-shadow .15s ease-in-out; */
-}
+
 .form-container {
   border: 1px solid #ccc;
   padding: 20px;

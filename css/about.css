@@ -1,0 +1,127 @@
+body {
+  background: #eff2f6;
+}
+.main-img{
+     width: 320px;
+    height: auto;
+    transition: all ease-in-out 0.4s;
+}
+
+.services-wrapper{
+  display: flex;
+  justify-content:space-between;
+  text-align: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.service{
+flex: 0 0 auto;
+width: 30%;
+}
+.service-card{
+  border: 0.8px solid #c8c8c8;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
+}
+.service-card-header{
+  height: 90px;
+  border-bottom: 0.8px solid ;
+  border-radius: 10px 10px 0 0 ;
+  padding: 20px;
+}
+.service-card-body{
+  flex: 1 1 auto;
+  padding: 20px;
+  height: 170px;
+}
+.main{
+  margin-top: 150px!important;
+}
+.form{
+  width: 80%;
+}
+.form-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  /* background-color: rgb(242, 242, 242); */
+  max-width: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.form-container button{
+  margin-top: 10px;
+   width: 10rem;
+}
+textarea{
+    height: 8rem;
+}
+
+
+.img-logo{
+    display: block;
+    position: relative;
+     overflow: hidden;
+  
+   animation: animate 1s ease-in 0s infinite alternate;
+}
+@keyframes animate {
+  
+  from { 
+    margin-top: 50px; 
+    margin-left: 50px;
+     transform: rotate(5deg);
+    
+  }
+  
+  50%  {
+    /* ignored */
+    margin-top: 80px !important; 
+    margin-left: 80px!important;
+     transform: rotate(-3deg);
+  }
+  
+  to   { 
+    margin-top: 75px; 
+    margin-left: 100px;
+     transform: rotate(8deg);
+    
+  }
+  
+}
+/* .img-logo:hover{
+    padding-left: 50px;
+    padding-right: 50px;
+    transition: all ease-in-out 0.2s;
+} */
+
+.card{
+  border-radius: 10px;
+}
+ @media (max-width: 479px) {
+    .services-wrapper{
+    display: block;
+  }
+  .service{
+  width: 100%;
+  margin-bottom: 10px;
+  }
+   .card-deck {
+  display: block!important;
+  margin: 0 auto;
+  }
+  .card {
+    margin-bottom: 10px!important;
+     margin: 10px auto!important;
+     width: 100%!important;
+  }
+  .form{
+  width: 100%;
+  
+}
+
+ }
