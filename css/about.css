@@ -6,7 +6,6 @@ body {
     height: auto;
     transition: all ease-in-out 0.4s;
 }
-
 .services-wrapper{
   display: flex;
   justify-content:space-between;
@@ -52,6 +51,7 @@ width: 30%;
   justify-content: center;
   margin: 0 auto;
   margin-bottom: 20px;
+  box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
 }
 .form-container button{
   margin-top: 10px;
@@ -67,7 +67,7 @@ textarea{
     position: relative;
      overflow: hidden;
   
-   animation: animate 1s ease 0s infinite alternate;
+   animation: animate 1s  0s infinite alternate;
 }
 @keyframes animate {
   
@@ -79,32 +79,30 @@ textarea{
   }
   25%{
     margin-top: 10px !important; 
-    margin-left: 30px!important;
+    margin-left: 50px!important;
   }
   50%  {
     /* ignored */
     margin-top: 20px !important; 
-    margin-left: 10px!important;
+    margin-left: 30px!important;
      transform: rotate(-3deg);
   }
   
   to   { 
     margin-top: 0px; 
-    margin-left: 20px;
+    margin-left: 50px;
      transform: rotate(8deg);
     
   }
   
 }
-/* .img-logo:hover{
-    padding-left: 50px;
-    padding-right: 50px;
-    transition: all ease-in-out 0.2s;
-} */
+
 
 .card{
   border-radius: 10px;
+  box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
 }
+
  @media (max-width: 479px) {
     .services-wrapper{
     display: block;
