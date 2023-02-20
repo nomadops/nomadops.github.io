@@ -61,6 +61,35 @@ textarea{
     height: 8rem;
 }
 
+.card{
+  border-radius: 10px;
+  box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
+}
+
+ @media (max-width: 479px) {
+    .services-wrapper{
+    display: block;
+  }
+  .service{
+  width: 100%;
+  margin-bottom: 10px;
+  }
+   .card-deck {
+  display: block!important;
+  margin: 0 auto;
+  }
+  .card {
+    margin-bottom: 10px!important;
+     margin: 10px auto!important;
+     width: 100%!important;
+  }
+  .form{
+  width: 100%;
+    }
+
+ }
+
+ /* Styles for logo animation  */
 .img-logo{
     display: block;
     margin: 0 auto;
@@ -97,33 +126,3 @@ textarea{
   }
   
 }
-
-
-.card{
-  border-radius: 10px;
-  box-shadow: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb),.075);
-}
-
- @media (max-width: 479px) {
-    .services-wrapper{
-    display: block;
-  }
-  .service{
-  width: 100%;
-  margin-bottom: 10px;
-  }
-   .card-deck {
-  display: block!important;
-  margin: 0 auto;
-  }
-  .card {
-    margin-bottom: 10px!important;
-     margin: 10px auto!important;
-     width: 100%!important;
-  }
-  .form{
-  width: 100%;
-  
-}
-
- }
