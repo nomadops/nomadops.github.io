@@ -47,9 +47,10 @@
       </a>
     </div>
   </nav>
-  <main class="container main mt-5 mb-5">
+  <main class="container-fluid main  mt-5 mb-5 ">
     <div class="row">
-      <div class="col-lg-6 mb-5 mx-auto">
+      <section id="hero" class="mb-5 border-bottom">
+         <div class="col-lg-6 mb-5 mx-auto">
          <img class="img-fluid   d-block mx-auto" id="img-main" src="images/corgi-desk-medium.webp" width="220px" height="104px"
           alt="Nomadops Corgi mascot working at a desk with a large monitor." />
       </div>
@@ -66,11 +67,13 @@
           </p>
         </div>
       </div>
+      </section>
      
-      <section id="services" class="mb-3 mt-3">
+     
+      <section id="services" class=" mb-5 border-bottom">
         <div class="container">
-          <h2 class="text-center font-weight-bold">Services</h2>
-          <div class=" services-wrapper">
+          <h2 class="text-center mb-3 font-weight-bold">Services</h2>
+          <div class=" services-wrapper mb-5">
             <div class="service ">
               <div class="service-card border-primary-subtle shadow-sm">
                 <div class="service-card-header text-primary-emphasis bg-primary-subtle border-primary-subtle ">
@@ -99,10 +102,10 @@
           </div>
         </div>
     </section>
-    <section id="about">
-      <div class="row m-1">
-        <div class="col-lg-10  p-3 mx-auto ">
-          <h2 class="text-center font-weight-bold">About</h2>
+    <section id="about" class="bg-white mb-5 border-bottom  ">
+      <div class="row ms-3 me-3 mb-3">
+        <div class="col-lg-8  p-3 mx-auto ">
+          <h2 class="text-center mb-3 font-weight-bold">About</h2>
           <p>
             <strong class="bg-primary-subtle">Why nomadops?</strong>
             We're digital nomads traveling and working remotely from all around the world. Most frequently we can be
@@ -153,11 +156,11 @@
       </div>
     </section>
    
-    <section id="contact">
-      <div class="container pt-2">
+    <section id="contact" class="mb-5  border-bottom">
+      <div class="container mb-3 pt-2">
         <div class="row">
-          <div class="col-lg-6 mx-auto text-center">
-            <h2 class="text-center font-weight-bold mb-3">Contact</h2>
+          <div class="col-lg-6 p-3 mx-auto text-center">
+            <h2 class="text-center mb-3 font-weight-bold ">Contact</h2>
             <div class="form-container bg-light">
               <form method="post" action="https://sendfly.io/v1/fe6ef41e-677a-42c4-a70c-476fcdba2383" class="form">
                 <div>
@@ -182,25 +185,25 @@
         </div>
       </div>
     </section>
-    <section id="projects container">
-      <div class="row">
-        <div class="col-lg-10 p-2 mx-auto  ">
+    <section id="projects" class="container mb-5 border-bottom ">
+      <div class="row mb-5">
+        <div class="col-lg-10  p-3 mx-auto  ">
           <h2 class="text-center font-weight-bold mb-3">Projects</h2>
           <div class="card-deck d-flex justify-content-evenly">
-            <div class="card  border-0" style="width: 45%;">
+            <div class="card bg-white border-0" style="width: 45%;">
               <div class="card-body  ">
-                <h5 class="card-title text-primary-emphasis">profiles.dev</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Developer profile hosting.</h6>
-                <p class="card-text">
+                <h5 class="card-title mb-3 text-primary-emphasis">profiles.dev</h5>
+                <h6 class="card-subtitle mb-3 text-muted">Developer profile hosting.</h6>
+                <p class="card-text mb-3">
                   profiles.dev is a nice place on the web to promote your services and projects.
                 </p>
-                <a href="https://profiles.dev/" class="btn btn-outline-primary">Visit profiles.dev</a>
+                <a href="https://profiles.dev/" class="btn btn-outline-primary mb-2">Visit profiles.dev</a>
               </div>
             </div>
-            <div class="card border-0" style="width: 45%;">
+            <div class="card bg-white border-0" style="width: 45%;">
               <div class="card-body ">
-                <h5 class="card-title text-primary-emphasis">driftctl-slack</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <h5 class="card-title mb-3 text-primary-emphasis">driftctl-slack</h5>
+                <h6 class="card-subtitle mb-3 text-muted">Card subtitle</h6>
                 <ol>
                   <li>
                     <a href="https://github.com/nomadops/driftctl-slack" class="card-link ">Visit</a>
@@ -223,7 +226,13 @@
         <img src="images/corgi-round-md.webp" class="img-logo" width="75px" height="75px">
       </div>
     </div>
+    
   </main>
+  <section id="footer">
+      <footer class="navbar navbar-expand-md navbar-dark bg-dark">
+
+      </footer>
+    </section>
   <script src="js/about.js"></script>
 
 </body>
