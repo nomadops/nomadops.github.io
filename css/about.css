@@ -40,12 +40,13 @@ width: 30%;
   padding: 20px;
   height: 170px;
 }
+
 .about-bg{
-  
+  /* background-color: #c8c8c8;
+  color: white; */
   text-align: center;
-  color: white;
-  border-radius: 10px 10px 100px 100px ;
-  height: 80px;
+  /* border-radius: 10px 10px 100px 100px ; */
+  height: 50px;
   width: 100%;
 }
 .about-bg h2{
@@ -81,11 +82,58 @@ width: 30%;
 textarea{
     height: 8rem;
 }
+.about{
+ position: relative;
+  z-index: 2;
+}
+.shape{
+  position: relative;
+  width: 100%;
+  /* z-index: 1; */
+  /* height: 500px; */
+
+}
+.bg-shape{
+  position: absolute;
+  top: -320px;
+  /* overflow: hidden; */
+ 
+      bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.bg-shape2{
+  position: absolute;
+  top: -380px;
+  /* overflow: hidden; */
+ 
+      bottom: 0;
+    left: 0;
+    right: 0;
+}
+#contact{
+  background-color: #f1f4f8;
+   position: relative;
+  z-index: 0;
+}
+#projects{
+   position: relative;
+  z-index: 2;
+}
+#projects h2{
+  color: white;
+  padding-bottom: 20px;
+}
+
+.icon-shape{
+  width: 100%;
+}
+
 
 .card{
    border: 1px solid #c8c8c8;
   border-radius: 10px;
- 
   box-shadow: 0 1.5rem 4rem rgba(22,28,45,.05)!important;
 }
 footer{
@@ -125,6 +173,21 @@ footer{
   width: 100%;
     }
 
+ }
+ @media (max-width: 770px) {
+   .service{
+  width: 100%;
+  margin-bottom: 10px;
+  }
+  .card{
+ margin-bottom: 10px!important;
+     margin: 10px auto!important;
+     width: 100%!important;
+  }
+  .about{
+   width: 90%;
+   margin: 0 auto;
+  }
  }
 
  /* Styles for logo animation  */
