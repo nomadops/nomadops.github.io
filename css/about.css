@@ -184,11 +184,17 @@ footer{
      margin: 10px auto!important;
      width: 100%!important;
   }
+  .card-project{
+    width: 100%;
+  }
   .form{
   width: 100%;
     }
-       .bg-shape2{
+  .bg-shape2{
     top: -200px;
+   }
+     .bg-shape3{
+    top: -100px;
    }
 
  }
@@ -200,7 +206,11 @@ footer{
   .card{
  margin-bottom: 10px!important;
      margin: 10px auto!important;
-     width: 100%!important;
+     width: 100%;
+  }
+  
+  .card-project{
+    width: 45%;
   }
   .about{
    width: 90%;
@@ -215,6 +225,9 @@ footer{
    }
       .bg-shape2{
     top: -280px;
+   }
+       .bg-shape3{
+    top: -160px;
    }
  }
   @media (min-width: 660px) {
@@ -239,6 +252,9 @@ footer{
    }
     .bg-shape2{
     top: -450px;
+   }
+    .bg-shape3{
+    top: -250px;
    }
  }
  @media (min-width: 1060px) {
