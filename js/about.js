@@ -1,11 +1,12 @@
-const img = document.getElementById("img-main");
+// const img = document.getElementById("img-main");
 
 const navLinks = document.querySelectorAll(".nav-item");
 const menuToggle = document.getElementById("navbarSupportedContent");
 const bsCollapse = new bootstrap.Collapse(menuToggle);
 
+  
 window.addEventListener("load", function (event) {
-  img.classList.add('main-img')
+  // img.classList.add('main-img')
   menuToggle.classList.remove("show");
 });
 
@@ -16,3 +17,17 @@ window.addEventListener("load", function (event) {
    });
 
 
+
+   const sections = document.querySelectorAll(".section");
+
+   const observer = new IntersectionObserver((entries) => {
+     entries.forEach((entry) => {
+       if (entry.isIntersecting) {
+         entry.target.classList.add("animate");
+       }
+     });
+   });
+
+   sections.forEach((section) => {
+     observer.observe(section);
+   });

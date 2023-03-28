@@ -169,6 +169,21 @@ footer{
   width: 40px;
   height: 40px;
 }
+
+
+.section.animate {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+
+
  @media (max-width: 479px) {
     .services-wrapper{
     display: block;
