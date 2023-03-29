@@ -2,17 +2,19 @@
 
 const navLinks = document.querySelectorAll(".nav-item");
 const menuToggle = document.getElementById("navbarSupportedContent");
-const bsCollapse = new bootstrap.Collapse(menuToggle);
+// const bsCollapse = new bootstrap.Collapse(menuToggle);
 
-  
-window.addEventListener("load", function (event) {
- 
-  menuToggle.classList.remove("show");
-});
+  // document.addEventListener("load", function (event) {
+  //   //  bsCollapse.toggle();
+  //   menuToggle.classList.remove("show");
+  // });
+
+
 
    navLinks.forEach((l) => {
      l.addEventListener("click", () => {
-       bsCollapse.toggle();
+       menuToggle.classList.remove("show");
+      //  bsCollapse.toggle();
      });
    });
 
