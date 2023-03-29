@@ -6,11 +6,7 @@ body {
   margin-top: 150px!important;
 
 }
-.main-img{
-     width: 320px;
-    height: auto;
-    transition: all ease-in-out 0.4s;
-}
+
 .services-wrapper{
   display: flex;
   justify-content:space-between;
@@ -91,8 +87,8 @@ textarea{
   width: 100%;
   /* z-index: 1; */
   /* height: 500px; */
-
 }
+
 .bg-shape{
   position: absolute;
   top: -200px;
@@ -225,7 +221,6 @@ footer{
      margin: 10px auto!important;
      width: 100%;
   }
-  
   .card-project{
     width: 45%;
   }
@@ -233,9 +228,8 @@ footer{
    width: 90%;
    margin: 0 auto;
   }
-   
-  
  }
+ 
   @media (min-width: 479px) {
    .bg-shape{
     top: -250px;
