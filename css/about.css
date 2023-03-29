@@ -6,7 +6,9 @@ body {
   margin-top: 150px!important;
 
 }
-
+.w{
+  height:  100px;
+}
 .services-wrapper{
   display: flex;
   justify-content:space-between;
