@@ -1,0 +1,53 @@
+
+html, body {
+  overflow-x: hidden;
+}
+.about-us{
+    margin-top: 150px;
+    padding: 0;
+}
+.hero-wrapper{
+   padding-bottom: 100px;
+}
+.about-card{
+    border-left: 3px solid  #0d6efd;;
+    padding-left: 30px;
+}
+.hero-wrapper h2{
+font-size: 48px ;
+}
+h2{
+    margin-bottom: 20px;
+}
+h1{
+    font-size: 48px;
+    margin: 30px;
+   text-align: center;
+}
+.img-wrapper{
+    border-radius: 50px;
+}
+.about-wrapper{
+     position: relative;
+    background-color: #F1F4F8;
+}
+.sub-title{
+   text-align: center; 
+}
+.bg-shape{
+    top: -39vw;
+}
+.friends-wrapper{
+     position: relative;
+     z-index: 2;
+     top: -45vw;
+}
+.section.animate {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.section1{
+  opacity: 0;
+  transform: translateX(-50px);
+}
