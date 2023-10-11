@@ -1,0 +1,250 @@
+:root {
+  --color-border: hsl(0, 0%, 0%);
+  --border-radius: 5px;
+  --text: 0;
+  --value: 9;
+  --value-scale: 12%;
+  --pad: 10px;
+  --bottom-margin: 2rem;
+  --w: initial;
+  --h: initial;
+  --value0: hsl(0, 0%, calc(0 * var(--value-scale)));
+  --value1: hsl(0, 0%, calc(1 * var(--value-scale)));
+  --value2: hsl(0, 0%, calc(2 * var(--value-scale)));
+  --value3: hsl(0, 0%, calc(3 * var(--value-scale)));
+  --value4: hsl(0, 0%, calc(4 * var(--value-scale)));
+  --value5: hsl(0, 0%, calc(5 * var(--value-scale)));
+  --value6: hsl(0, 0%, calc(6 * var(--value-scale)));
+  --value7: hsl(0, 0%, calc(7 * var(--value-scale)));
+  --value8: hsl(0, 0%, calc(8 * var(--value-scale)));
+  --value9: hsl(0, 0%, calc(9 * var(--value-scale)));
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+blockstart {
+  background-color: #fff;
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+blockstart.short {
+  height: unset;
+  height: unset;
+  min-height: unset;
+}
+
+blockstart * {
+  font-size: 1.1em;
+}
+
+blockstart > * + * {
+  margin-bottom: var(--bottom-margin);
+}
+
+blockstart > *:last-child {
+  margin-bottom: 0px;
+}
+
+blockstart a {
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+}
+
+blockstart block {
+  --spacing: space-evenly;
+
+  display: flex;
+  background-color: hsl(0, 0%, calc(var(--value) * var(--value-scale)));
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+  justify-content: var(--spacing);
+  flex-direction: column;
+  padding: var(--pad);
+  width: var(--w);
+  min-width: var(--w);
+  max-width: var(--w);
+  height: var(--h);
+  min-height: var(--h);
+  max-height: var(--h);
+}
+
+blockstart block > * {
+  --spacing: flex-start;
+  --pad: 10px;
+  --w: initial;
+  --h: initial;
+
+  background-color: hsl(0, 0%, calc(var(--value) * var(--value-scale)));
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+  display: flex;
+  justify-content: var(--spacing);
+  align-self: stretch;
+  flex-direction: column;
+  margin: 2px;
+  padding: var(--pad);
+  width: var(--w);
+  min-width: var(--w);
+  max-width: var(--w);
+  height: var(--h);
+  min-height: var(--h);
+  max-height: var(--h);
+}
+
+blockstart stack {
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "cover";
+}
+
+blockstart stack > * {
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+  width: 100%;
+  height: 100%;
+  position: relative;
+  grid-area: cover;
+}
+
+blockstart stack > .top {
+  z-index: 10;
+}
+
+blockstart .wide {
+  width: 100%;
+}
+
+blockstart .no-flex {
+  display: block;
+  flex: unset;
+  flex-direction: unset;
+  align-self: unset;
+}
+
+blockstart .center {
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+blockstart .center-text {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+blockstart .center-self {
+  align-self: center;
+}
+
+blockstart .vertical {
+  flex-direction: column;
+}
+
+blockstart .horizontal {
+  flex-direction: row;
+}
+
+blockstart grid {
+  --cols: auto;
+  --rows: auto;
+  --gap: 0.5rem;
+
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+  display: grid;
+  grid-gap: var(--gap);
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+
+blockstart hr {
+  --height: 1rem;
+
+  min-height: var(--height);
+  visibility: hidden;
+}
+
+blockstart hr.huge {
+  --height: 3rem;
+}
+
+blockstart shape {
+  --value: 2;
+  --text: 9;
+  --pad: 1rem;
+
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+  background-color: hsl(0, 0%, calc(var(--value) * var(--value-scale)));
+  display: flex;
+  width: var(--w);
+  min-width: var(--w);
+  max-width: var(--w);
+  height: var(--h);
+  min-height: var(--h);
+  max-height: var(--h);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: pad;
+}
+
+blockstart .debug {
+  border: 1px solid red;
+}
+
+blockstart .debug > * {
+  border: 1px solid blue;
+}
+
+blockstart .border {
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+blockstart .compact {
+  justify-content: flex-start;
+}
+
+blockstart .compact > * {
+  flex: unset;
+}
+
+.solid {
+  --value: 4;
+  --text: 9;
+}
+
+.fill {
+  flex: 1 1 auto;
+}
+
+button {
+  --value: 7;
+  --text: 0;
+
+  background-color: hsl(0, 0%, calc(var(--value) * var(--value-scale)));
+  color: hsl(0, 0%, calc(var(--text) * var(--value-scale)));
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+button:hover {
+  filter: brightness(90%);
+}
+
+[style*="--aspect-ratio"] {
+  aspect-ratio: var(--aspect-ratio);
+}
