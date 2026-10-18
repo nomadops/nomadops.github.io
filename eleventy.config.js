@@ -11,7 +11,7 @@ export default function (eleventyConfig) {
 
   // Front-matter sections → Markdown text (used by llms-full.txt).
   eleventyConfig.addFilter("sectionsToMarkdown", sectionsToMarkdown);
-  eleventyConfig.addFilter("isoDate", (d) => new Date(d ?? Date.now()).toISOString().slice(0, 10));
+  eleventyConfig.addFilter("isoDate", (d) => new Date(d || Date.now()).toISOString().slice(0, 10));
 
   return {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
