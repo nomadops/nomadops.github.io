@@ -22,23 +22,26 @@ Only first-party actions are used (`actions/*`, `aws-actions/*`, `pulumi/*`); ev
 
 ## First-time setup
 
+Everything regional lives in `eu-west-1` (the `nomadops-dev` account). The one exception is the ACM certificate, which CloudFront requires in `us-east-1`; the site program creates it there through a second provider.
+
 1. **Bootstrap**, once, with an AWS profile that can create IAM roles:
    ```sh
-   aws cloudformation deploy \
+   aws --profile nomadops-dev --region eu-west-1 cloudformation deploy \
      --template-file infra/bootstrap/template.yaml \
      --stack-name nomadops-bootstrap \
      --capabilities CAPABILITY_NAMED_IAM \
      --parameter-overrides StateBucketName=nomadops-pulumi-state
-   aws cloudformation describe-stacks --stack-name nomadops-bootstrap --query 'Stacks[0].Outputs'
+   aws --profile nomadops-dev --region eu-west-1 cloudformation describe-stacks \
+     --stack-name nomadops-bootstrap --query 'Stacks[0].Outputs'
    ```
 2. **Repository settings** (Settings → Secrets and variables → Actions):
    - Secret `PULUMI_CONFIG_PASSPHRASE`: any long random string; it encrypts stack secrets in the state bucket. Keep it somewhere safe.
    - Variables `AWS_INFRA_DEPLOY_ROLE_ARN`, `AWS_INFRA_PREVIEW_ROLE_ARN`, `PULUMI_STATE_BUCKET` from the bootstrap outputs.
-3. **Stack config** is committed in `infra/*/Pulumi.prod.yaml`. Set the contact email, and for the site either `route53ZoneId` or follow the manual-DNS path in `site/index.ts`.
+3. **Stack config** is committed in `infra/*/Pulumi.prod.yaml`: region `eu-west-1`, the Route 53 zone for nomadops.io, and the contact email (set it before the first `up`).
 4. Merge; the Infra workflow runs `pulumi up` for both stacks. Read the job output for `functionUrl`, `bucketName`, `distributionId`, `deployRoleArn`.
 5. More repository variables, from those outputs: `SITE_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID`, `AWS_SITE_DEPLOY_ROLE_ARN`. Put `functionUrl` into `src/_data/site.json` as `formAction` and `contactFormOrigin` into `site/Pulumi.prod.yaml`.
 6. Push to `main`: the Deploy workflow fills the bucket. Check `https://<distributionDomain>/`.
-7. Point DNS at CloudFront (automatic with Route 53), confirm both hostnames, then disable GitHub Pages, delete `pages.yml` and `src/CNAME`, and make the repository private.
+7. The site stack creates the Route 53 alias records for `nomadops.io` and `www`, so DNS cuts over on that `up`. Confirm both hostnames, then disable GitHub Pages, delete `pages.yml` and `src/CNAME`, and make the repository private.
 
 ## Day to day
 

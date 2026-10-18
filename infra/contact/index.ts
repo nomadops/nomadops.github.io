@@ -2,7 +2,7 @@
 // a DynamoDB table for messages and rate limiting, and SES for the notification.
 //
 //   pulumi config set email you@nomadops.io
-//   pulumi config set aws:region us-east-1
+//   pulumi config set aws:region eu-west-1
 //   pulumi up
 //
 // The first `up` sends a verification email to the address; click the link

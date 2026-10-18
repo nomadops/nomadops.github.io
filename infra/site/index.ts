@@ -3,7 +3,7 @@
 // apex redirect, and a GitHub OIDC deploy role that can only write this
 // bucket and invalidate this distribution.
 //
-//   pulumi config set aws:region us-east-1
+//   pulumi config set aws:region eu-west-1
 //   pulumi config set domain nomadops.io
 //   pulumi config set route53ZoneId Z0123456789ABC   # only if the zone is in Route 53
 //   pulumi up

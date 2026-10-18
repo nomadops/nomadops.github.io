@@ -10,7 +10,7 @@ Prerequisites: the Pulumi CLI, Node 20 or later, and an AWS profile with permiss
 cd infra/contact
 npm install
 pulumi stack init prod          # first time only
-pulumi config set aws:region us-east-1
+pulumi config set aws:region eu-west-1
 pulumi config set email you@nomadops.io   # receives the messages; also the SES sender
 pulumi up
 ```

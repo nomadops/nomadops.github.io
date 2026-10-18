@@ -18,7 +18,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ vars.AWS_SITE_DEPLOY_ROLE_ARN }}
-          aws-region: us-east-1
+          aws-region: eu-west-1
       - name: Upload the site
         run: |
           # Assets: a day. HTML and llms-full.txt: five minutes, so edits show up quickly.
