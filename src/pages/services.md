@@ -4,7 +4,7 @@
   "order": 2,
   "permalink": "/services/",
   "layout": "layouts/base.njk",
-  "description": "DevOps and SRE agents, MCP servers for your app, operations tools and panels, agentic DevOps and SRE posture, and infrastructure as code with Terraform and Pulumi.",
+  "description": "DevOps and SRE agents, MCP servers for your app, operations tools and panels, help getting your team ready for agents, and CI/CD pipelines and infrastructure your team can change safely.",
   "ogDescription": "DevOps and SRE agents, MCP servers and operations panels for your app.",
   "sections": [
     {
@@ -83,23 +83,19 @@
           ]
         },
         {
-          "id": "infrastructure",
-          "label": "05 · Infrastructure",
-          "title": "Infrastructure as code",
-          "intro": "Cloud infrastructure and delivery pipelines that people and agents can change safely.",
+          "id": "pipelines",
+          "label": "05 · Pipelines",
+          "title": "CI/CD pipelines and infrastructure",
+          "intro": "Delivery pipelines and cloud infrastructure that people and agents can change safely.",
           "items": [
-            "Infrastructure as code with Terraform and Pulumi",
-            "CI/CD pipelines with a plan or preview check on every change",
-            "Custom Terraform modules for patterns you repeat"
+            "CI/CD pipelines with a check on every change, preview environments and a rollback path",
+            "Infrastructure as code for the cloud you already use, with a plan or preview on every change",
+            "Everything in your repositories, documented and handed over"
           ],
           "tags": [
-            "Terraform",
-            "Pulumi"
-          ],
-          "more": {
-            "label": "Our modules on the Terraform Registry",
-            "href": "https://registry.terraform.io/namespaces/nomadops"
-          }
+            "CI/CD",
+            "Infrastructure as code"
+          ]
         }
       ]
     },

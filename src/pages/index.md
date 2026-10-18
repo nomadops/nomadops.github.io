@@ -152,7 +152,7 @@
           "summary": "Atlas builds pipelines. It sets up CI/CD for your repositories, with checks on every change.",
           "items": [
             "Builds CI/CD pipelines for your repositories",
-            "Adds Terraform plan and Pulumi preview checks",
+            "Adds plan and preview checks on infrastructure changes",
             "Updates pipelines when your stack changes"
           ]
         }
