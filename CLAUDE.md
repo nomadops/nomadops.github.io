@@ -15,7 +15,7 @@ Informational marketing site. Eleventy 3, Nunjucks, zero client-side JavaScript.
 - No `<script>` tags. Forms post to sendfly; validation is CSS `:user-invalid` only.
 - New colors or type sizes go in `design-system/tokens/`, not in `site.css`.
 - GitHub Actions: only first-party actions (`actions/*`, `aws-actions/*`, `pulumi/*`). Anything else is a CLI command in a `run:` step. No third-party actions, however convenient.
-- Infrastructure lives in `infra/` as Pulumi, applied by the Infra workflow (`preview` on pull requests, `up` on `main`). Deploys move built artifacts into existing resources; they never create resources.
+- Infrastructure lives in `infra/` as Pulumi, applied by the Infra workflow (`preview` on pull requests, `up` on `main`); `infra/bootstrap` (the state bucket) is the one stack applied by hand. Deploys move built artifacts into existing resources; they never create resources.
 - After content edits run `npm run build && npm run check` and read `_site/llms-full.txt` once to confirm it reads well.
 
 ## Common tasks

@@ -1,0 +1,3 @@
+config:
+  aws:region: eu-west-1
+  nomadops-access:stateBucket: nomadops-pulumi-state

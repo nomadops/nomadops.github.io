@@ -1,0 +1,17 @@
+{
+  "name": "nomadops-access-infra",
+  "private": true,
+  "description": "Pulumi program for the GitHub OIDC provider and the roles the Infra workflow assumes.",
+  "main": "index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6",
+    "@pulumi/pulumi": "^3"
+  }
+}

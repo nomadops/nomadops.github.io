@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-26.04
     strategy:
       fail-fast: false
-      matrix: { stack: [contact, site] }
+      matrix: { stack: [bootstrap, access, contact, site] }
     defaults:
       run:
         working-directory: infra/${{ matrix.stack }}

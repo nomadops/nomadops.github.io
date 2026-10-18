@@ -1,0 +1,6 @@
+name: nomadops-access
+description: GitHub OIDC provider and the roles the Infra workflow assumes.
+runtime:
+  name: nodejs
+  options:
+    typescript: true
