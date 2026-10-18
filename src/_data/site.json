@@ -4,7 +4,6 @@
   "title": "nomadops | Agentic DevOps and SRE",
   "description": "nomadops develops DevOps and SRE agents, builds MCP servers and operations panels into apps, and helps teams improve their agentic DevOps and SRE posture.",
   "ogImage": "/images/corgi-front-square.png",
-  "fonts": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap",
   "nav": [
     {
       "label": "Services",

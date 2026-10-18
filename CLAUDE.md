@@ -7,6 +7,7 @@ Informational marketing site. Eleventy 3, Nunjucks, zero client-side JavaScript.
 - `src/_includes/sections/<type>.njk` — HTML for each section type. `lib/markdown.js` — Markdown for each section type (feeds `/llms-full.txt`). **Add a section type in both places**; `npm run check` verifies.
 - `src/_data/site.json` — nav, footer, CTA, form action, meta.
 - `src/css/site.css` — component rules. **Tokens (colors, fonts, radii, spacing) are not here** — they are in `design-system/tokens/` and imported.
+- The build inlines `site.css` and every local file it `@import`s into a `<style>` tag in each page (`lib/css.js`). No stylesheet requests, no remote `@import`. Fonts are self-hosted in `design-system/assets/fonts/`.
 - `design-system/` — the design system (see `design-system/readme.md` and `design-system/SKILL.md`). React components there are for prototyping new sections; the site itself uses the Nunjucks twins. Keep class names aligned.
 
 ## Rules
