@@ -64,11 +64,16 @@
       "type": "toolStrip",
       "label": "We work with",
       "items": [
-        "Terraform",
-        "Pulumi",
-        "SRE agents",
-        "DevOps agents",
-        "MCP"
+        "AWS",
+        "Azure",
+        "Amazon Bedrock",
+        "PostgreSQL",
+        "Supabase",
+        "Railway",
+        "Netlify",
+        "Claude",
+        "OpenAI",
+        "rizom.ai"
       ]
     },
     {

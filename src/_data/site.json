@@ -1,8 +1,8 @@
 {
   "name": "nomadops",
   "url": "https://nomadops.io",
-  "title": "nomadops | Agentic DevOps and SRE",
-  "description": "nomadops develops DevOps and SRE agents, builds MCP servers and operations panels into apps, and helps teams improve their agentic DevOps and SRE posture.",
+  "title": "nomadops | Fractional DevOps and SRE, with agents",
+  "description": "nomadops is a small senior team that builds the operations small startups and small teams are missing: pipelines, infrastructure, security controls, operations tooling and the agents that keep running after handover.",
   "ogImage": "/images/corgi-front-square.png",
   "nav": [
     {
@@ -18,12 +18,8 @@
       "href": "/#principles"
     },
     {
-      "label": "About",
+      "label": "Team",
       "href": "/about/"
-    },
-    {
-      "label": "GitHub",
-      "href": "https://github.com/nomadops"
     }
   ],
   "cta": {
@@ -36,24 +32,12 @@
       "href": "https://github.com/nomadops"
     },
     {
-      "label": "Terraform Registry",
-      "href": "https://registry.terraform.io/namespaces/nomadops"
-    },
-    {
-      "label": "Upwork",
-      "href": "https://www.upwork.com/ag/nomadops/"
-    },
-    {
-      "label": "Fiverr",
-      "href": "https://www.fiverr.com/nomadops"
-    },
-    {
       "label": "Twitter",
       "href": "https://twitter.com/nomadopsio"
     },
     {
-      "label": "Slack",
-      "href": "https://nomadopsllc.slack.com"
+      "label": "Email",
+      "href": "mailto:hello@nomadops.io"
     }
   ],
   "formAction": "https://sendfly.io/v1/fe6ef41e-677a-42c4-a70c-476fcdba2383"
