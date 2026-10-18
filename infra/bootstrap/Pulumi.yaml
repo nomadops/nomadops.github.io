@@ -1,0 +1,6 @@
+name: nomadops-bootstrap
+description: The Pulumi state bucket. Applied once, by hand, on the local backend.
+runtime:
+  name: nodejs
+  options:
+    typescript: true

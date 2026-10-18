@@ -6,17 +6,10 @@ The site's contact form posts to a Lambda Function URL in the nomadops AWS accou
 
 Prerequisites: the Pulumi CLI, Node 20 or later, and an AWS profile with permission to create the Lambda, DynamoDB, SES and IAM resources.
 
-```sh
-cd infra/contact
-npm install
-pulumi stack init prod          # first time only
-pulumi config set aws:region us-east-1
-pulumi config set email you@nomadops.io   # receives the messages; also the SES sender
-pulumi up
-```
+The stack is applied by the Infra workflow (see `../README.md`). Config is in `Pulumi.prod.yaml`: region, the recipient address, and the Route 53 zone.
 
-1. SES emails the address a verification link on the first `up`. Click it. In SES's default sandbox the function can only send to verified addresses, which is all it needs: the sender and the recipient are the same address.
-2. Copy the `functionUrl` output into `src/_data/site.json` as `formAction` and open a PR for the site.
+1. With the zone id set, the stack verifies `nomadops.io` in SES with DKIM records in Route 53 and sends from `contact-form@nomadops.io`. A verified domain satisfies the SES sandbox for both sender and recipient, so no production-access request is needed for a form that only emails the team.
+2. Copy the `functionUrl` output into `src/_data/site.json` as `formAction`, and its origin into `../site/Pulumi.prod.yaml` as `contactFormOrigin` (so the CSP allows the post).
 3. Submit the form once from the live site and confirm the email arrives and the row exists in the table.
 
 ## Operating it

@@ -1,0 +1,32 @@
+name: Deploy site
+on:
+  push: { branches: [main] }
+  workflow_dispatch: {}
+permissions:
+  id-token: write
+  contents: read
+concurrency: { group: deploy, cancel-in-progress: false }
+jobs:
+  deploy:
+    if: vars.SITE_BUCKET != ''
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 24, cache: npm }
+      - run: npm ci && npm run build && npm run check
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_SITE_DEPLOY_ROLE_ARN }}
+          aws-region: eu-west-1
+      - name: Upload the site
+        run: |
+          # Assets: a day. HTML and llms-full.txt: five minutes, so edits show up quickly.
+          aws s3 sync _site "s3://${{ vars.SITE_BUCKET }}" --delete \
+            --exclude "*.html" --exclude "llms-full.txt" \
+            --cache-control "public, max-age=86400"
+          aws s3 sync _site "s3://${{ vars.SITE_BUCKET }}" \
+            --exclude "*" --include "*.html" --include "llms-full.txt" \
+            --cache-control "public, max-age=300"
+      - name: Invalidate CloudFront
+        run: aws cloudfront create-invalidation --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" --paths "/*"

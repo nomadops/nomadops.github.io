@@ -1,0 +1,5 @@
+config:
+  aws:region: eu-west-1
+  nomadops-site:domain: nomadops.io
+  nomadops-site:route53ZoneId: Z10365383I3UW4TPNO5JD
+  # nomadops-site:contactFormOrigin: https://xxxx.lambda-url.eu-west-1.on.aws   # from the contact stack's functionUrl output, origin only

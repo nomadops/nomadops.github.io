@@ -1,0 +1,6 @@
+name: nomadops-site
+description: Hosting for nomadops.io (S3 + CloudFront + ACM) and the GitHub OIDC deploy role.
+runtime:
+  name: nodejs
+  options:
+    typescript: true

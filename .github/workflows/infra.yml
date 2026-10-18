@@ -1,0 +1,39 @@
+name: Infra
+on:
+  pull_request:
+    paths: ["infra/**", ".github/workflows/infra.yml"]
+  push:
+    branches: [main]
+    paths: ["infra/**", ".github/workflows/infra.yml"]
+permissions:
+  id-token: write      # OIDC token for AWS
+  contents: read
+  pull-requests: write # pulumi/actions comments the preview on the PR
+concurrency: { group: infra, cancel-in-progress: false }
+jobs:
+  pulumi:
+    if: vars.PULUMI_STATE_BUCKET != ''
+    runs-on: ubuntu-26.04
+    strategy:
+      fail-fast: false
+      matrix: { stack: [access, contact, site] }
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 24 }
+      - run: npm ci
+        working-directory: infra/${{ matrix.stack }}
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ github.event_name == 'pull_request' && vars.AWS_INFRA_PREVIEW_ROLE_ARN || vars.AWS_INFRA_DEPLOY_ROLE_ARN }}
+          aws-region: eu-west-1
+      - uses: pulumi/actions@v7
+        with:
+          command: ${{ github.event_name == 'pull_request' && 'preview' || 'up' }}
+          stack-name: prod
+          work-dir: infra/${{ matrix.stack }}
+          cloud-url: s3://${{ vars.PULUMI_STATE_BUCKET }}
+          upsert: true
+          comment-on-pr: ${{ github.event_name == 'pull_request' }}
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}

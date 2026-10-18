@@ -1,0 +1,5 @@
+config:
+  aws:region: eu-west-1
+  nomadops-contact:email: mhalligan+contactform@nomadops.io
+  nomadops-contact:siteUrl: https://nomadops.io
+  nomadops-contact:route53ZoneId: Z10365383I3UW4TPNO5JD
