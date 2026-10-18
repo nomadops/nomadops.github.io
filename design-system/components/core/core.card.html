@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components" viewport="760x1500" name="Core" subtitle="Buttons, labels, chips, cards, agent card, terminal, mocks, flow, form, header, footer" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="this.remove()"></script>
+<script src="../../ds-loader.js" data-components="."></script>
+<style>body{margin:0;padding:16px;font-family:var(--font-sans);font-size:17px;line-height:1.6;color:var(--text);background:var(--ground)}.lbl{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin:18px 0 8px}.dk{background:var(--ink);padding:20px;border-radius:12px}</style></head>
+<body><div id="root"></div>
+<script type="text/babel">
+window.NomadopsDSReady.then(() => {
+  const { Button, Eyebrow, CardLabel, More, SectionHead, Arrows, Pill, Badge, Tags, Dot, Card, AgentCard, Terminal, McpToolList, OpsPanel, Flow, Principle, Field, ContactForm, Header, Footer, ToolStrip, Steps, CtaBand, QA, Friend } = window.NomadopsDS;
+  const App = () => <div>
+    <div className="lbl">Button · primary / sm / ghost (dark) / dark (light)</div>
+    <div style={{display:"flex",gap:12,alignItems:"center",flexWrap:"wrap"}}><Button>Start a project</Button><Button size="sm">Let's talk</Button><span className="dk" style={{padding:8}}><Button variant="ghost">Meet our agents</Button></span><Button variant="dark">Send message</Button></div>
+    <div className="lbl">Eyebrow · CardLabel · More · Arrows · Tags</div>
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}><div><Eyebrow>What we do</Eyebrow><CardLabel>01 · Agents</CardLabel><div style={{marginTop:8}}><More href="#">All services</More></div></div><div><Arrows items={["Read tools for health, logs, deploys and queues","Action tools with an approval rule for each action"]} /><Tags items={["Terraform","Pulumi","MCP"]} style={{marginTop:12}} /></div></div>
+    <div className="lbl">Pill · Badge · Dot (on ink)</div>
+    <div className="dk" style={{display:"flex",gap:16,alignItems:"center",flexWrap:"wrap",color:"var(--on-ink)"}}><Pill>sre · production</Pill><Badge>read</Badge><Badge approval>needs approval</Badge><span style={{display:"flex",gap:10,alignItems:"center"}}><Dot tone="fail"/><Dot tone="accent"/><Dot tone="ok"/><Dot tone="warn"/></span></div>
+    <div className="lbl">Card · AgentCard</div>
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16,alignItems:"start"}}>
+      <Card label="02 · MCP" title="MCP servers for your app" moreLabel="Details" moreHref="#">We build MCP servers that let SRE and DevOps agents check, operate and fix your app, within limits you set.</Card>
+      <div className="dk" style={{padding:0}}><AgentCard icon="debugger" pill="debugger" name="InspectorGadget" role="Finder and debugging agent" summary="InspectorGadget finds the cause. It reads logs, metrics and recent changes, and reports what it found." items={["Triages alerts for the on-call engineer","Traces errors to the change that caused them"]} /></div></div>
+    <div className="lbl">Terminal (click Approve) · McpToolList</div>
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16,alignItems:"start"}}>
+      <Terminal lines={[{sym:"fail",text:"alert: error rate up on /checkout"},{agent:"InspectorGadget",note:"finding the cause"},{text:"mcp: your-app.get_health"},{text:"cause: deploy 4f2c1a changed a timeout"},{agent:"HeyPenny",note:"preparing the fix"},{sym:"ok",text:"policy checks passed"}]} waitingText="HeyPenny is waiting for your approval" approvedText="Approved by you. HeyPenny is rolling back the deploy." />
+      <McpToolList tools={[{name:"get_health"},{name:"list_deploys"},{name:"retry_job",approval:true},{name:"rollback_deploy",approval:true}]} foot="Every call is logged with the agent, the tool and the result." /></div>
+    <div className="lbl">OpsPanel</div>
+    <OpsPanel groups={[{label:"Health",rows:[{label:"API",status:"Normal"},{label:"Job queue",status:"3 failed jobs",tone:"warn",action:"Retry"}]},{label:"Agent activity",rows:[{label:<span><strong>HeyPenny</strong> proposed: retry 3 failed jobs</span>,meta:"2 min ago · waiting for approval",action:"Review",accent:true}]}]} />
+    <div className="lbl">Flow · Principle (on ink)</div>
+    <div className="dk"><Flow style={{margin:"0 0 24px"}} steps={[{label:"Agent"},{label:"Proposed change"},{label:"Policy checks"},{label:"Human review",human:true},{label:"Apply"}]} /><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:24}}><Principle title="Only the access it needs">Each agent gets its own identity and only the tools and permissions its job needs.</Principle><Principle title="Every action is logged">You can see what each agent did, when it did it, and why.</Principle></div></div>
+    <div className="lbl">ContactForm · Steps</div>
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16,alignItems:"start"}}><ContactForm /><Steps steps={[{title:"Assess",text:"We review your product's agentic DevOps and SRE posture."},{title:"Build",text:"We build in your repositories and your app."}]} /></div>
+    <div className="lbl">CtaBand · QA · Friend</div>
+    <CtaBand title="Not sure where to start? Tell us which work repeats." />
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:24,marginTop:16}}><QA question="Why a Corgi?" title="Corgis kept us going.">nomadops started during the Covid lockdowns, when Corgi videos did a lot for our mental health.</QA><ul style={{margin:0,padding:0}}><Friend initials="in" name="inmadesign" href="#">The designer responsible for all of our mascots.</Friend></ul></div>
+    <div className="lbl">Header · ToolStrip · Footer</div>
+    <div style={{borderRadius:12,overflow:"hidden"}}><Header current="Services" assetsBase="../../assets" /><ToolStrip items={["Terraform","Pulumi","SRE agents","DevOps agents","MCP"]} /><Footer assetsBase="../../assets" /></div>
+  </div>;
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+});
+</script></body></html>

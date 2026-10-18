@@ -1,0 +1,5 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<div class="container section qa">{% for q in s.items %}
+  <section aria-labelledby="{{ q.id }}-title">{{ m.eyebrow(q.question) }}<h2 id="{{ q.id }}-title">{{ q.title }}</h2><p>{{ q.text | safe }}</p></section>{% endfor %}
+</div>

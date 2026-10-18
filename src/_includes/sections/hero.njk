@@ -1,0 +1,18 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="dark" aria-labelledby="hero-title">
+  <div class="container hero">
+    <div class="hero-copy">
+      {{ m.eyebrow(s.eyebrow) }}
+      <h1 id="hero-title">{{ s.title }}</h1>
+      <p class="hero-lead">{{ s.lead }}</p>
+      <div class="actions">{% for a in s.actions %}<a class="btn {{ a.variant or 'btn-primary' }}" href="{{ a.href }}">{{ a.label }}</a>{% endfor %}</div>
+    </div>
+    {% if s.terminal %}{% set t = s.terminal %}
+    <div class="terminal">
+      <div class="terminal-head"><p class="terminal-title">{{ m.dot("fail") }}{{ t.title }}</p>{{ m.pill(t.pill) }}</div>
+      <ol class="log">{% for l in t.lines %}{% if l.agent %}<li class="log-agent">{{ l.agent }} <span>· {{ l.note }}</span></li>{% else %}<li><span class="sym-{{ l.sym or 'step' }}" aria-hidden="true">{{ "✗" if l.sym == "fail" else ("✓" if l.sym == "ok" else "→") }}</span> {{ l.text }}</li>{% endif %}{% endfor %}</ol>
+      <div class="terminal-foot"><p class="status-line">{{ m.dot("accent") }}{{ t.waiting }}</p><a class="link-on-dark" href="{{ t.whyHref }}">Why agents ask first</a></div>
+    </div>{% endif %}
+  </div>
+</section>

@@ -1,0 +1,17 @@
+name: CI
+on: { pull_request: {} }
+permissions: { contents: read }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci && npm run build && npm run check
+      - name: Fail if _site contains a script tag
+        run: |
+          if grep -rn "<script" _site/; then
+            echo "::error::_site/ contains a <script> tag. The site ships zero client-side JavaScript."
+            exit 1
+          fi

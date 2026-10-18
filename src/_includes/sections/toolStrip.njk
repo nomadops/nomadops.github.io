@@ -1,0 +1,4 @@
+{% set s = s %}
+<section class="tool-strip" aria-label="{{ s.label }}">
+  <div class="container"><p class="tool-strip-label">{{ s.label }}</p><ul class="inline-list">{% for i in s.items %}<li>{{ i }}</li>{% endfor %}</ul></div>
+</section>

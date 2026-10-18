@@ -1,0 +1,15 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="section dark" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+  <div class="container">
+    <div class="section-head"><div>{{ m.eyebrow(s.eyebrow) }}<h2 class="section-title" id="{{ s.id }}-title">{{ s.title }}</h2><p class="lead">{{ s.lead }}</p></div></div>
+    <div class="grid grid-300">{% for a in s.items %}
+      <article class="agent">
+        <div class="agent-top"><span class="agent-icon" aria-hidden="true">{{ m.icon(a.icon) }}</span>{{ m.pill(a.pill) }}</div>
+        <div><h3>{{ a.name }}</h3><p class="agent-role">{{ a.role }}</p></div>
+        <p class="agent-summary">{{ a.summary }}</p>
+        {{ m.arrows(a.items) }}
+      </article>{% endfor %}
+    </div>
+  </div>
+</section>

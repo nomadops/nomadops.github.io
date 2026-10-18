@@ -1,0 +1,40 @@
+/* Copied verbatim from css/site.css :root on nomadops/nomadops.github.io@gh-pages. */
+:root {
+  color-scheme: light;
+
+  /* Dark surfaces ("ink") — header, hero, agents, principles, footer */
+  --ink: #0e1418;
+  --ink-raised: #162028;
+  --ink-row: #1e2a33;
+  --ink-line: #2a3640;
+  --ink-line-strong: #3a4650;
+  --on-ink: #f3f4f1;
+  --on-ink-muted: #c9d0cc;
+  --on-ink-subtle: #8a979f;
+
+  /* Light surfaces */
+  --ground: #f3f4f1;
+  --paper: #ffffff;
+  --paper-tint: #f7f8f6;
+  --chip: #edefec;
+  --line: #d9ddd9;
+  --input-line: #7e8a85;
+  --text: #0e1418;
+  --text-muted: #47535b;
+
+  /* Accent (orange) */
+  --accent: #e8862e;
+  --accent-hover: #f09a4a;
+  --accent-text: #9a4a0c;
+
+  /* Status */
+  --ok: #2e8b76;
+  --warn: #c2410c;
+  --ok-on-ink: #7cc9b5;
+  --fail-on-ink: #ff9b8a;
+  --error: #b42318;
+  --error-bg: #fef3f2;
+
+  --focus: var(--accent-text);
+  --btn-dark-hover: #24313a;
+}

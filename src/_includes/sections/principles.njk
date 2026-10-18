@@ -1,0 +1,9 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="section dark" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+  <div class="container">
+    {{ m.eyebrow(s.eyebrow) }}<h2 class="section-title" id="{{ s.id }}-title">{{ s.title }}</h2><p class="lead lead-narrow">{{ s.lead }}</p>
+    <ol class="flow">{% for f in s.flow %}<li><span class="flow-step{% if f.human %} flow-step-human{% endif %}">{{ f.label }}</span>{% if not loop.last %}{{ m.chevron() }}{% endif %}</li>{% endfor %}</ol>
+    <div class="grid principles">{% for p in s.items %}<div class="principle"><h3>{{ p.title }}</h3><p>{{ p.text }}</p></div>{% endfor %}</div>
+  </div>
+</section>

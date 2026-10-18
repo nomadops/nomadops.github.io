@@ -1,0 +1,6 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="container steps-section" aria-labelledby="steps-title">
+  {{ m.eyebrow(s.eyebrow) }}<h2 class="section-title section-title-sm" id="steps-title">{{ s.title }}</h2>
+  <ol class="steps">{% for x in s.items %}<li><p class="card-label">Step {{ loop.index }}</p><h3>{{ x.title }}</h3><p>{{ x.text }}</p></li>{% endfor %}</ol>
+</section>

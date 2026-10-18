@@ -1,0 +1,12 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<div class="container services">{% for x in s.items %}
+  <article class="service" id="{{ x.id }}" aria-labelledby="{{ x.id }}-title">
+    <div class="service-intro"><p class="card-label">{{ x.label }}</p><h2 id="{{ x.id }}-title">{{ x.title }}</h2><p>{{ x.intro }}</p></div>
+    <div class="service-detail">
+      {% if x.agents %}<ul class="mini-agents">{% for a in x.agents %}<li><span class="mini-agent-name">{{ a.name }}</span><span class="mini-agent-role">{{ a.role }}</span></li>{% endfor %}</ul>{% endif %}
+      {{ m.arrows(x.items) }}
+      {% if x.tags %}<div class="tags-row"><ul class="tags">{% for t in x.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% if x.more %}{{ m.more(x.more.label, x.more.href) }}{% endif %}</div>{% endif %}
+    </div>
+  </article>{% endfor %}
+</div>
