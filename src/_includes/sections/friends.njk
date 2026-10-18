@@ -1,0 +1,8 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="section band" aria-labelledby="friends-title">
+  <div class="container">
+    {{ m.eyebrow(s.eyebrow) }}<h2 class="section-title section-title-sm" id="friends-title">{{ s.title }}</h2><p class="lead lead-narrow">{{ s.lead }}</p>
+    <ul class="friends">{% for x in s.items %}<li class="friend"><span class="friend-initials" aria-hidden="true">{{ x.initials }}</span><div><h3><a href="{{ x.href }}">{{ x.name }}</a></h3><p>{{ x.text }}</p></div></li>{% endfor %}</ul>
+  </div>
+</section>

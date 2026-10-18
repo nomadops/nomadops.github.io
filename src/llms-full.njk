@@ -1,0 +1,27 @@
+---
+permalink: /llms-full.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }}
+
+> {{ site.description }}
+
+Site: {{ site.url }} · Generated {{ "" | isoDate }} from the same content as the HTML pages.
+
+{% for p in collections.pages %}
+---
+
+# Page: {{ p.data.title }} ({{ site.url }}{{ p.url }})
+
+{{ p.data.sections | sectionsToMarkdown }}
+{% if p.templateContent | striptags | trim %}
+{{ p.templateContent | striptags }}
+{% endif %}
+{% endfor %}
+
+---
+
+## Links
+
+{% for l in site.footer %}- {{ l.label }}: {{ l.href }}
+{% endfor %}

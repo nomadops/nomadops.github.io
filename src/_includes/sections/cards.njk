@@ -1,0 +1,13 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="section" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+  <div class="container">
+    <div class="section-head">
+      <div>{{ m.eyebrow(s.eyebrow) }}<h2 class="section-title" id="{{ s.id }}-title">{{ s.title }}</h2><p class="lead">{{ s.lead }}</p></div>
+      {% if s.more %}{{ m.more(s.more.label, s.more.href) }}{% endif %}
+    </div>
+    <div class="grid">{% for c in s.items %}
+      <article class="card"><p class="card-label">{{ c.label }}</p><h3>{{ c.title }}</h3><p>{{ c.text }}</p>{% if c.more %}{{ m.more(c.more.label, c.more.href) }}{% endif %}</article>{% endfor %}
+    </div>
+  </div>
+</section>

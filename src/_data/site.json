@@ -1,0 +1,61 @@
+{
+  "name": "nomadops",
+  "url": "https://nomadops.io",
+  "title": "nomadops | Agentic DevOps and SRE",
+  "description": "nomadops develops DevOps and SRE agents, builds MCP servers and operations panels into apps, and helps teams improve their agentic DevOps and SRE posture.",
+  "ogImage": "/images/corgi-front-square.png",
+  "fonts": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap",
+  "nav": [
+    {
+      "label": "Services",
+      "href": "/services/"
+    },
+    {
+      "label": "Agents",
+      "href": "/#agents"
+    },
+    {
+      "label": "Approach",
+      "href": "/#principles"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/nomadops"
+    }
+  ],
+  "cta": {
+    "label": "Let's talk",
+    "href": "/#contact"
+  },
+  "footer": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/nomadops"
+    },
+    {
+      "label": "Terraform Registry",
+      "href": "https://registry.terraform.io/namespaces/nomadops"
+    },
+    {
+      "label": "Upwork",
+      "href": "https://www.upwork.com/ag/nomadops/"
+    },
+    {
+      "label": "Fiverr",
+      "href": "https://www.fiverr.com/nomadops"
+    },
+    {
+      "label": "Twitter",
+      "href": "https://twitter.com/nomadopsio"
+    },
+    {
+      "label": "Slack",
+      "href": "https://nomadopsllc.slack.com"
+    }
+  ],
+  "formAction": "https://sendfly.io/v1/fe6ef41e-677a-42c4-a70c-476fcdba2383"
+}

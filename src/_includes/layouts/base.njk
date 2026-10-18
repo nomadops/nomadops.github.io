@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title ~ " | nomadops" if title != "Home" else site.title }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title ~ ' | nomadops' if title != 'Home' else site.title }}">
+  <meta property="og:description" content="{{ ogDescription or description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.ogImage }}">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Site content as Markdown">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ site.fonts }}">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/header.njk" %}
+  <main id="main">
+    {% for s in sections %}{% include "sections/" ~ s.type ~ ".njk" %}{% endfor %}
+    {% if content | trim %}<section class="section"><div class="container prose">{{ content | safe }}</div></section>{% endif %}
+  </main>
+  {% include "partials/footer.njk" %}
+</body>
+</html>

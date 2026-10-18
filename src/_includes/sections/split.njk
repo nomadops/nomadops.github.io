@@ -1,0 +1,8 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="section band" aria-labelledby="{{ s.id }}-title">
+  <div class="container split">
+    <img class="mascot" src="{{ s.image }}" alt="The nomadops corgi mascot." width="200" height="300" loading="lazy">
+    <div class="split-copy">{{ m.eyebrow(s.eyebrow) }}<h2 class="section-title section-title-sm" id="{{ s.id }}-title">{{ s.title }}</h2><p class="lead">{{ s.lead }}</p>{% if s.more %}{{ m.more(s.more.label, s.more.href) }}{% endif %}</div>
+  </div>
+</section>

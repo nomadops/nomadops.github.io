@@ -1,0 +1,11 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="dark" aria-labelledby="page-title">
+  <div class="container page-hero{% if s.portrait %} about-hero{% endif %}">
+    {% if s.portrait %}<div>{% endif %}
+    {{ m.eyebrow(s.eyebrow) }}
+    <h1 id="page-title">{{ s.title }}</h1>
+    <p class="hero-lead">{{ s.lead }}</p>
+    {% if s.portrait %}</div><img class="about-portrait" src="{{ s.portrait }}" alt="The nomadops corgi mascot." width="220" height="220">{% endif %}
+  </div>
+</section>

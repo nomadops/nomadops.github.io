@@ -1,0 +1,27 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="section{% if s.band %} band{% endif %}" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+  <div class="container feature{% if s.reverse %} feature-reverse{% endif %}">
+    <div class="feature-copy">
+      {{ m.eyebrow(s.eyebrow) }}<h2 class="section-title section-title-sm" id="{{ s.id }}-title">{{ s.title }}</h2><p class="lead">{{ s.lead }}</p>
+      {{ m.arrows(s.items) }}
+      {% if s.more %}{{ m.more(s.more.label, s.more.href) }}{% endif %}
+    </div>
+    {% if s.mcpTools %}
+    <figure class="feature-media mock-dark">
+      <figcaption class="mock-head"><span>{{ s.mock.head }}</span><span class="mock-head-meta">{{ s.mcpTools | length }} tools</span></figcaption>
+      <ul class="mcp-tools">{% for t in s.mcpTools %}<li>{{ t.name }} {{ m.badge(t.approval) }}</li>{% endfor %}</ul>
+      <p class="mock-foot">{{ s.mock.foot }}</p>
+    </figure>
+    {% elif s.panel %}
+    <figure class="feature-media mock-light">
+      <figcaption class="mock-head"><span><strong>{{ s.panel.app }}</strong> / {{ s.panel.section }}</span><span class="mock-head-meta">{{ s.panel.meta }}</span></figcaption>
+      <div class="mock-body">{% for g in s.panel.groups %}
+        <div><p class="mock-label">{{ g.label }}</p><ul class="rows">{% for r in g.rows %}
+          <li><span>{{ r.label | safe }}{% if r.meta %} <span class="meta">{{ r.meta }}</span>{% endif %}</span>{% if r.status or r.action %}<span class="row-end">{% if r.status %}<span class="status">{{ m.dot(r.tone or "ok") }}{{ r.status }}</span>{% endif %}{% if r.action %}<span class="mock-btn{% if r.accent %} mock-btn-accent{% endif %}">{{ r.action }}</span>{% endif %}</span>{% endif %}</li>{% endfor %}
+        </ul></div>{% endfor %}
+      </div>
+    </figure>
+    {% endif %}
+  </div>
+</section>

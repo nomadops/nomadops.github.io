@@ -1,0 +1,18 @@
+{% set s = s %}
+{% import "macros.njk" as m %}
+<section class="section" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+  <div class="container contact">
+    <div class="contact-copy">
+      {{ m.eyebrow(s.eyebrow) }}<h2 class="section-title" id="{{ s.id }}-title">{{ s.title }}</h2><p class="lead">{{ s.lead }}</p>
+      <ul class="contact-links">{% for l in s.links %}<li><a href="{{ l.href }}">{{ l.label }}</a></li>{% endfor %}</ul>
+    </div>
+    <form class="form" method="post" action="{{ site.formAction }}">
+      <p class="form-note">All fields are required.</p>
+      {% set err %}<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.75v3.75M8 11.25h.01"/></svg>{% endset %}
+      <div class="field"><label for="name">Name</label><input id="name" name="1. Name" type="text" autocomplete="name" required aria-errormessage="name-error"><p class="error-msg" id="name-error">{{ err | safe }}Enter your name.</p></div>
+      <div class="field"><label for="email">Email</label><input id="email" name="2. E-mail" type="email" autocomplete="email" required aria-errormessage="email-error"><p class="error-msg" id="email-error">{{ err | safe }}Enter an email address, for example name@company.com.</p></div>
+      <div class="field"><label for="message">Message</label><textarea id="message" name="3. Message" rows="5" required aria-errormessage="message-error"></textarea><p class="error-msg" id="message-error">{{ err | safe }}Enter a short message.</p></div>
+      <button class="btn btn-dark" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
