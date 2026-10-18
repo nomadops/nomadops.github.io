@@ -1,6 +1,7 @@
 // GitHub Actions access: the OIDC provider and the two roles the Infra workflow
 // assumes. First `up` from a laptop (CI cannot assume a role that does not exist
-// yet); after that the Infra workflow previews and applies it like any other stack.
+// yet), done by ../bootstrap.sh; after that the Infra workflow previews and
+// applies it like any other stack. By hand:
 //
 //   cd infra/access && npm install
 //   pulumi login s3://nomadops-pulumi-state     # created by infra/bootstrap

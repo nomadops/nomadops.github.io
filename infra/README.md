@@ -4,8 +4,8 @@ Everything nomadops.io runs on lives here as Pulumi. The stacks are applied from
 
 | Directory | What | Applied by |
 |---|---|---|
-| `bootstrap/` | The Pulumi state bucket | once, from a laptop, on the local backend |
-| `access/` | GitHub OIDC provider and the two roles the Infra workflow assumes | first `up` from a laptop, then the Infra workflow |
+| `bootstrap/` | The Pulumi state bucket | once, from a laptop, by `bootstrap.sh` |
+| `access/` | GitHub OIDC provider and the two roles the Infra workflow assumes | first `up` from a laptop by `bootstrap.sh`, then the Infra workflow |
 | `site/` | S3 bucket, CloudFront distribution, ACM certificate, security headers, www redirect, the narrow role the Deploy workflow uses | the Infra workflow (Pulumi) |
 | `contact/` | Lambda + Function URL, DynamoDB table, SES identity and IAM for the contact form | the Infra workflow (Pulumi) |
 
@@ -25,31 +25,19 @@ Only first-party actions are used (`actions/*`, `aws-actions/*`, `pulumi/*`); ev
 
 Everything regional lives in `eu-west-1` (the `nomadops-dev` account). The one exception is the ACM certificate, which CloudFront requires in `us-east-1`; the site program creates it there through a second provider.
 
-1. **Bootstrap the state bucket**, once, on Pulumi's local backend (the bucket can't hold its own state):
+Stack config is committed in `infra/*/Pulumi.prod.yaml`: region, state bucket name, the Route 53 zone for nomadops.io, the contact email.
+
+1. **Run the bootstrap script** from a laptop with the `nomadops-dev` profile, `pulumi`, `aws`, `npm` and (optionally) a logged-in `gh`:
    ```sh
-   export AWS_PROFILE=nomadops-dev
-   cd infra/bootstrap && npm install
-   pulumi login --local
-   pulumi stack select prod --create
-   pulumi up
+   ./infra/bootstrap.sh
    ```
-   Then switch to the S3 backend for everything else: `pulumi login s3://nomadops-pulumi-state`.
-2. **Create the CI roles**, first `up` from the laptop (CI can't assume a role that doesn't exist yet):
-   ```sh
-   cd ../access && npm install
-   pulumi stack select prod --create
-   pulumi up
-   pulumi stack output
-   ```
-   From here on the Infra workflow previews and applies `access` like the other stacks.
-3. **Repository settings** (Settings → Secrets and variables → Actions):
-   - Secret `PULUMI_CONFIG_PASSPHRASE`: any long random string; it encrypts stack secrets in the state bucket. Keep it somewhere safe.
-   - Variables `AWS_INFRA_DEPLOY_ROLE_ARN` and `AWS_INFRA_PREVIEW_ROLE_ARN` from the access stack's outputs, and `PULUMI_STATE_BUCKET` (`nomadops-pulumi-state`).
-4. **Stack config** is committed in `infra/*/Pulumi.prod.yaml`: region `eu-west-1`, the Route 53 zone for nomadops.io, and the contact email (set it before the first `up`).
-5. Merge; the Infra workflow runs `pulumi up` for the site and contact stacks. Read the job output for `functionUrl`, `bucketName`, `distributionId`, `deployRoleArn`.
-6. More repository variables, from those outputs: `SITE_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID`, `AWS_SITE_DEPLOY_ROLE_ARN`. Put `functionUrl` into `src/_data/site.json` as `formAction` and `contactFormOrigin` into `site/Pulumi.prod.yaml`.
-7. Push to `main`: the Deploy workflow fills the bucket. Check `https://<distributionDomain>/`.
-8. The site stack creates the Route 53 alias records for `nomadops.io` and `www`, so DNS cuts over on that `up`. Confirm both hostnames, then disable GitHub Pages, delete `pages.yml` and `src/CNAME`, and make the repository private.
+   It asks for a passphrase, shows the AWS identity it is about to use, then: creates the state bucket with the `bootstrap/` stack on Pulumi's local backend and moves that stack's state into the bucket; runs the first `up` of `access/` (CI can't assume a role that doesn't exist yet); sets the repository secret `PULUMI_CONFIG_PASSPHRASE` and the variables `PULUMI_STATE_BUCKET`, `AWS_INFRA_DEPLOY_ROLE_ARN`, `AWS_INFRA_PREVIEW_ROLE_ARN` (or prints them, with `--no-github` or no `gh`). Every `pulumi up` shows its preview and waits for a yes; `--yes` skips that. Bucket names are global: if `nomadops-pulumi-state` is taken, change `stateBucket` in `bootstrap/` and `access/` `Pulumi.prod.yaml` and run again.
+2. Merge; the Infra workflow runs `pulumi up` for `access`, `contact` and `site`. From here on it previews and applies `access` like the other stacks.
+3. **Run the script again.** It finds the site stack's outputs and sets `SITE_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID` and `AWS_SITE_DEPLOY_ROLE_ARN`, and prints the contact function URL to put into `src/_data/site.json` as `formAction` and, origin only, into `site/Pulumi.prod.yaml` as `contactFormOrigin`.
+4. Push to `main`: the Deploy workflow fills the bucket. Check `https://<distributionDomain>/`.
+5. The site stack creates the Route 53 alias records for `nomadops.io` and `www`, so DNS cuts over on that `up`. Confirm both hostnames, then disable GitHub Pages, delete `pages.yml` and `src/CNAME`, and make the repository private.
+
+The script is a wrapper over `pulumi login`, `pulumi stack select --create`, `pulumi up` and `gh variable set`; each step is skipped when it has already happened, so it is safe to run again at any point.
 
 ## Day to day
 

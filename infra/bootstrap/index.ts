@@ -1,10 +1,15 @@
-// Bootstrap: the one bucket Pulumi state lives in. Applied once from a laptop
-// with Pulumi's local backend, since the bucket cannot hold its own state:
+// Bootstrap: the one bucket Pulumi state lives in. Applied once from a laptop by
+// ../bootstrap.sh, which creates it on Pulumi's local backend (the bucket cannot
+// hold its own state yet) and then moves this stack's state into the bucket.
+// By hand, that is:
 //
 //   cd infra/bootstrap && npm install
 //   pulumi login --local
 //   pulumi stack select prod --create
 //   pulumi up
+//   pulumi stack export --file state.json
+//   pulumi login s3://<stateBucket>
+//   pulumi stack select prod --create && pulumi stack import --file state.json
 //
 // Every other stack in infra/ logs in to s3://<stateBucket>.
 
