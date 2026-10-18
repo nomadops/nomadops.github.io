@@ -1,0 +1,31 @@
+:root {
+  --gutter: clamp(16px, 4vw, 24px);
+  --gap-wide: clamp(32px, 6vw, 56px);
+  --radius: 10px;        /* cards, agent icon */
+  --radius-lg: 12px;     /* terminal, agent, feature media, form, service, cta band */
+  --radius-btn: 6px;     /* buttons, inputs, skip link, mock buttons */
+  --radius-pill: 999px;
+  --radius-rows: 8px;    /* .rows, .flow-step, .mini-agents li */
+
+  --container-max: 1200px;
+  --section-pad: clamp(64px, 10vw, 96px);
+  --grid-gap: 20px;
+  --grid-min: 260px;
+  --grid-min-300: 300px;
+  --card-pad: 28px;
+  --agent-pad: 32px;
+  --btn-min-h: 48px;
+  --btn-sm-min-h: 44px;
+  --btn-pad-x: 24px;
+  --btn-sm-pad-x: 16px;
+  --input-min-h: 48px;
+  --textarea-min-h: 140px;
+  --nav-pad-y: 18px;
+  --brand-logo: 44px;
+  --footer-logo: 36px;
+  --agent-icon: 48px;
+  --mascot-w: 200px;
+  --mascot-h: 300px;
+  --about-portrait: 220px;
+  --focus-ring: 3px;
+}
