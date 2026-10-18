@@ -81,7 +81,8 @@ move_bootstrap_state() {
   note "preview against the moved state; it should report no changes"
   (cd "$here/bootstrap" && { [ -d node_modules ] || npm_ci; } && pulumi preview)
   login_local
-  (cd "$here/bootstrap" && pulumi stack rm "$stack" --yes --force)   # state only; the bucket stays
+  # State only: the bucket stays, and so does the committed Pulumi.<stack>.yaml.
+  (cd "$here/bootstrap" && pulumi stack rm "$stack" --yes --force --preserve-config)
   login_s3
   note "bootstrap stack state is in s3://$bucket now (export kept at $export_file)"
 }
