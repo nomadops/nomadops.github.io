@@ -5,7 +5,7 @@ Extracted from **nomadops.io** — the site of nomadops, a small nomadic team of
 ## Sources
 - Live site: https://nomadops.io/ (index.html, services.html, about.html)
 - Repo: https://github.com/nomadops/nomadops.github.io — **branch `gh-pages`** (the default and deployed branch; `main` holds an obsolete Bootstrap-era site and must be ignored). Key files: `css/site.css` (all styles, tokens on `:root`), `js/site.js` (approval demo + form validation), `images/`.
-- No framework. Hand-written CSS with custom properties; Google Fonts.
+- No framework. Hand-written CSS with custom properties; self-hosted fonts in `assets/fonts/` (from Google Fonts, SIL OFL).
 
 ## Products represented
 One surface: the **nomadops.io marketing site**, three pages sharing one header/footer: Home (hero with approval demo, tool strip, what-we-do cards, agents, MCP feature, panels feature, principles, who-we-are, contact), Services (five service articles, three steps, CTA band), About (page hero with portrait, Q&A grid, friends & vendors).
