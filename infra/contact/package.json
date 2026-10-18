@@ -1,0 +1,20 @@
+{
+  "name": "nomadops-contact-infra",
+  "private": true,
+  "description": "Pulumi program for the nomadops.io contact form backend (Lambda + DynamoDB + SES).",
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5",
+    "@aws-sdk/client-dynamodb": "^3",
+    "@aws-sdk/client-ses": "^3"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6",
+    "@pulumi/pulumi": "^3"
+  },
+  "scripts": {
+    "test": "node --test handler/index.test.mjs",
+    "typecheck": "tsc --noEmit"
+  }
+}

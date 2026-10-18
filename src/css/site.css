@@ -188,6 +188,7 @@ a:hover { color: var(--accent-text); }
 .error-msg { display: none; align-items: center; gap: 6px; margin: 0; color: var(--error); font-size: 0.9375rem; }
 .field :user-invalid ~ .error-msg { display: flex; }
 .form .btn { align-self: flex-start; }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
 /* Footer */
 .site-footer .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; padding-block: 40px; }

@@ -9,9 +9,10 @@
     <form class="form" method="post" action="{{ site.formAction }}">
       <p class="form-note">All fields are required.</p>
       {% set err %}<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.75v3.75M8 11.25h.01"/></svg>{% endset %}
-      <div class="field"><label for="name">Name</label><input id="name" name="1. Name" type="text" autocomplete="name" required aria-errormessage="name-error"><p class="error-msg" id="name-error">{{ err | safe }}Enter your name.</p></div>
-      <div class="field"><label for="email">Email</label><input id="email" name="2. E-mail" type="email" autocomplete="email" required aria-errormessage="email-error"><p class="error-msg" id="email-error">{{ err | safe }}Enter an email address, for example name@company.com.</p></div>
-      <div class="field"><label for="message">Message</label><textarea id="message" name="3. Message" rows="5" required aria-errormessage="message-error"></textarea><p class="error-msg" id="message-error">{{ err | safe }}Enter a short message.</p></div>
+      <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required aria-errormessage="name-error"><p class="error-msg" id="name-error">{{ err | safe }}Enter your name.</p></div>
+      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required aria-errormessage="email-error"><p class="error-msg" id="email-error">{{ err | safe }}Enter an email address, for example name@company.com.</p></div>
+      <div class="field"><label for="message">Message</label><textarea id="message" name="message" rows="5" required aria-errormessage="message-error"></textarea><p class="error-msg" id="message-error">{{ err | safe }}Enter a short message.</p></div>
+      <div class="field hp" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
       <button class="btn btn-dark" type="submit">Send message</button>
     </form>
   </div>

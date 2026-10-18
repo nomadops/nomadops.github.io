@@ -1,0 +1,6 @@
+name: nomadops-contact
+description: Contact form backend for nomadops.io (Lambda Function URL, DynamoDB, SES).
+runtime:
+  name: nodejs
+  options:
+    typescript: true
