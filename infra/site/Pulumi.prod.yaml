@@ -1,0 +1,6 @@
+config:
+  aws:region: us-east-1
+  nomadops-site:domain: nomadops.io
+  # nomadops-site:route53ZoneId: Z0123456789ABC      # set if the zone is in Route 53
+  # nomadops-site:certificateValidated: "true"       # set after manual DNS validation, if not in Route 53
+  # nomadops-site:contactFormOrigin: https://xxxx.lambda-url.us-east-1.on.aws   # from the contact stack's output

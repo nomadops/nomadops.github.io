@@ -1,0 +1,4 @@
+config:
+  aws:region: us-east-1
+  nomadops-contact:email: hello@nomadops.io
+  nomadops-contact:siteUrl: https://nomadops.io

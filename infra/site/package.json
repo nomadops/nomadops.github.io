@@ -1,0 +1,17 @@
+{
+  "name": "nomadops-site-infra",
+  "private": true,
+  "description": "Pulumi program for nomadops.io hosting: S3, CloudFront, ACM, and the GitHub OIDC deploy role.",
+  "main": "index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6",
+    "@pulumi/pulumi": "^3"
+  }
+}

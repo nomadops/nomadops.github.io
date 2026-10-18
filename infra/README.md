@@ -1,0 +1,47 @@
+# Infrastructure
+
+Everything nomadops.io runs on lives here as code. Pulumi programs are applied from GitHub Actions; a tiny CloudFormation template is applied once by hand to give Actions a way in.
+
+| Directory | What | Applied by |
+|---|---|---|
+| `bootstrap/` | GitHub OIDC provider, the two roles Pulumi assumes from CI, the Pulumi state bucket | once, from a laptop (`aws cloudformation deploy`) |
+| `site/` | S3 bucket, CloudFront distribution, ACM certificate, security headers, www redirect, the narrow role the Deploy workflow uses | the Infra workflow (Pulumi) |
+| `contact/` | Lambda + Function URL, DynamoDB table, SES identity and IAM for the contact form | the Infra workflow (Pulumi) |
+
+## The line between infra and deploy
+
+Pulumi owns every resource and its configuration, including the contact function's code, which is small and tied to its IAM. The Deploy workflow owns artifacts only: it syncs the built site into the existing bucket and invalidates CloudFront. An infra change never deploys the site; a site deploy never creates a resource.
+
+## Workflows
+
+- **CI** (`ci.yml`, pull requests): builds the site, checks it, fails on any `<script>`, typechecks both Pulumi programs, runs the contact handler tests.
+- **Infra** (`infra.yml`, changes under `infra/`): `pulumi preview` on pull requests, commented on the PR; `pulumi up` on `main`. Assumes `nomadops-infra-preview` (read-only) or `nomadops-infra-deploy` through OIDC. Does nothing until the `PULUMI_STATE_BUCKET` repository variable is set.
+- **Deploy site** (`deploy.yml`, pushes to `main`): build, sync to S3, invalidate. Assumes the site stack's deploy role, which can only write that bucket and invalidate that distribution. Does nothing until the `SITE_BUCKET` repository variable is set.
+
+Only first-party actions are used (`actions/*`, `aws-actions/*`, `pulumi/*`); everything else is the AWS CLI in a `run:` step.
+
+## First-time setup
+
+1. **Bootstrap**, once, with an AWS profile that can create IAM roles:
+   ```sh
+   aws cloudformation deploy \
+     --template-file infra/bootstrap/template.yaml \
+     --stack-name nomadops-bootstrap \
+     --capabilities CAPABILITY_NAMED_IAM \
+     --parameter-overrides StateBucketName=nomadops-pulumi-state
+   aws cloudformation describe-stacks --stack-name nomadops-bootstrap --query 'Stacks[0].Outputs'
+   ```
+2. **Repository settings** (Settings → Secrets and variables → Actions):
+   - Secret `PULUMI_CONFIG_PASSPHRASE`: any long random string; it encrypts stack secrets in the state bucket. Keep it somewhere safe.
+   - Variables `AWS_INFRA_DEPLOY_ROLE_ARN`, `AWS_INFRA_PREVIEW_ROLE_ARN`, `PULUMI_STATE_BUCKET` from the bootstrap outputs.
+3. **Stack config** is committed in `infra/*/Pulumi.prod.yaml`. Set the contact email, and for the site either `route53ZoneId` or follow the manual-DNS path in `site/index.ts`.
+4. Merge; the Infra workflow runs `pulumi up` for both stacks. Read the job output for `functionUrl`, `bucketName`, `distributionId`, `deployRoleArn`.
+5. More repository variables, from those outputs: `SITE_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID`, `AWS_SITE_DEPLOY_ROLE_ARN`. Put `functionUrl` into `src/_data/site.json` as `formAction` and `contactFormOrigin` into `site/Pulumi.prod.yaml`.
+6. Push to `main`: the Deploy workflow fills the bucket. Check `https://<distributionDomain>/`.
+7. Point DNS at CloudFront (automatic with Route 53), confirm both hostnames, then disable GitHub Pages, delete `pages.yml` and `src/CNAME`, and make the repository private.
+
+## Day to day
+
+- Site content: merge to `main`, the Deploy workflow does the rest.
+- Infra: open a PR touching `infra/`, read the preview comment, merge.
+- The contact inbox is the DynamoDB table; the email is a copy. See `contact/README.md`.
