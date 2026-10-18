@@ -17,6 +17,9 @@ const stateBucketName = config.require("stateBucket");
 
 const tags = { app: "nomadops.io", component: "access" };
 
+// One per URL per account. If the account already has one, bootstrap.sh imports
+// it into this stack; from then on the stack owns it (its tags and thumbprint
+// are updated in place, and destroying the stack would delete it).
 const github = new aws.iam.OpenIdConnectProvider("github-oidc", {
   url: "https://token.actions.githubusercontent.com",
   clientIdLists: ["sts.amazonaws.com"],

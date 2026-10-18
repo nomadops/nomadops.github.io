@@ -86,6 +86,19 @@ move_bootstrap_state() {
   note "bootstrap stack state is in s3://$bucket now (export kept at $export_file)"
 }
 
+# AWS allows one OIDC provider per URL. If the account already has one for GitHub
+# (an earlier Actions setup), the access stack adopts it instead of creating it.
+adopt_github_oidc() {
+  local arn
+  arn=$(aws iam list-open-id-connect-providers --query 'OpenIDConnectProviderList[].Arn' --output text \
+    | tr '\t' '\n' | grep 'oidc-provider/token.actions.githubusercontent.com$' || true)
+  [ -n "$arn" ] || return 0
+  pulumi stack export | grep -q 'OpenIdConnectProvider::github-oidc"' && return 0
+  note "the account already has a GitHub OIDC provider ($arn); importing it into the access stack"
+  pulumi import aws:iam/openIdConnectProvider:OpenIdConnectProvider github-oidc "$arn" \
+    --yes --protect=false --generate-code=false
+}
+
 need pulumi "https://www.pulumi.com/docs/install/"
 need aws "https://aws.amazon.com/cli/"
 need npm "Node.js 22"
@@ -170,7 +183,7 @@ esac
 
 say "2/3 GitHub Actions access: OIDC provider and roles"
 login_s3
-(cd "$here/access" && npm_ci && pulumi stack select "$stack" --create && pulumi_up)
+(cd "$here/access" && npm_ci && pulumi stack select "$stack" --create && adopt_github_oidc && pulumi_up)
 deploy_role=$(output "$here/access" infraDeployRoleArn)
 preview_role=$(output "$here/access" infraPreviewRoleArn)
 [ -n "$deploy_role" ] && [ -n "$preview_role" ] || die "the access stack has no role outputs; read the pulumi output above"
